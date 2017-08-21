@@ -27,6 +27,7 @@ const create = (req, res, next) => {
   const run = Object.assign(req.body.run, {
     _owner: req.user._id
   })
+  console.log(req.body)
   Run.create(run)
     .then(run =>
       res.status(201)

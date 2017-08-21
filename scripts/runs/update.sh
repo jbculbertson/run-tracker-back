@@ -1,9 +1,15 @@
 #!/bin/bash
 
-TOKEN=Lk/1/4Qia9BNljMVchqvms8aEzFGELOir74DhtKPuAo=--04HwLeWJUxOxCFUO0pBa7s8x/VGQyBZEoU5y+ATvvYk=
+TOKEN=Z5B9c4C8Tt6zhkZi3xz2oQaRTKiOfrRkR4O8ROHFWZE=--OzDFvUYM9evYeY3xpo9rBt3HPzJKF0ptSzKdBgdCziI=
 ID=5999ba17caae28eb37cf0eba
 DISTANCE=10
 TIMETAKEN=70
+ROUTE={[
+          {lat: 37.772, lng: -122.214},
+          {lat: 21.291, lng: -157.821},
+          {lat: -18.142, lng: 178.431},
+          {lat: -27.467, lng: 153.027}
+        ]}
 
 API="http://localhost:4741"
 URL_PATH="/runs"
@@ -16,6 +22,7 @@ curl "${API}${URL_PATH}/${ID}" \
   --data '{
     "run": {
       "distance": "'"${DISTANCE}"'",
+      "route": "'"${ROUTE}"'",
       "timeTaken": "'"${TIMETAKEN}"'"
     }
   }'
