@@ -4,8 +4,8 @@ const controller = require('lib/wiring/controller')
 const models = require('app/models')
 const Run = models.run
 
-const authenticate = require('./concerns/authenticate')
-const setUser = require('./concerns/set-current-user')
+// const authenticate = require('./concerns/authenticate')
+// const setUser = require('./concerns/set-current-user')
 const setModel = require('./concerns/set-mongoose-model')
 
 const index = (req, res, next) => {
@@ -24,10 +24,10 @@ const show = (req, res) => {
 }
 
 const create = (req, res, next) => {
+  console.log('fires from within constroller ' + req.body)
   const run = Object.assign(req.body.run, {
-    _owner: req.user._id
+    // _owner: req.user._id
   })
-  console.log(req.body)
   Run.create(run)
     .then(run =>
       res.status(201)
@@ -57,8 +57,8 @@ module.exports = controller({
   update,
   destroy
 }, { before: [
-  { method: setUser, only: ['index', 'show'] },
-  { method: authenticate, except: ['index', 'show'] },
+  // { method: setUser, only: ['index', 'show'] },
+  // { method: authenticate, except: ['index', 'show'] },
   { method: setModel(Run), only: ['show'] },
   { method: setModel(Run, { forUser: true }), only: ['update', 'destroy'] }
 ] })

@@ -3,7 +3,7 @@
 DISTANCE=4
 TIMETAKEN=28
 ROUTE='[{lat: 37.772, lng: -122.214}, {lat: 21.291, lng: -157.821}, {lat: -18.142, lng: 178.431}, {lat: -27.467, lng: 153.027}]'
-TOKEN=jFz0AXh4raFM2Ue19kaLqjl6QL4mZC+nBtPREXocbNE=--4lvAF2pyNMncLkb5pudx0j4BNwlcWTEBYm8yGW6ejtM=
+TOKEN=aYSmAkYIA89UX3B2mjO0/sEXvaFXRsImoKATWueaG3M=--hvp6WNV24R6Iuxk2k68fqgu3bo7twlQpDbyLnam6hJQ=
 
 #
 
