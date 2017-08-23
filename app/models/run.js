@@ -29,9 +29,9 @@ const runSchema = new mongoose.Schema({
   }
 })
 
-// runSchema.virtual('length').get(function length () {
-//   return this.text.length
-// })
+runSchema.virtual('avgPace').get(function () {
+  return this.timeTaken / this.distance
+})
 
 const Run = mongoose.model('Run', runSchema)
 
