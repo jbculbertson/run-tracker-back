@@ -30,7 +30,7 @@ const runSchema = new mongoose.Schema({
 })
 
 runSchema.virtual('avgPace').get(function () {
-  return this.timeTaken / this.distance
+  return (this.timeTaken / this.distance).toFixed(2)
 })
 
 const Run = mongoose.model('Run', runSchema)
