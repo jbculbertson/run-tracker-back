@@ -17,6 +17,15 @@ const index = (req, res, next) => {
     .catch(next)
 }
 
+const userruns = (req, res, next) => {
+  Run.find({_owner: req.user._id})
+    .then(runs => res.json({
+      runs: runs.map((e) =>
+        e.toJSON({ virtuals: true, user: req.user }))
+    }))
+    .catch(next)
+}
+
 const show = (req, res) => {
   res.json({
     run: req.run.toJSON({ virtuals: true, user: req.user })
@@ -52,13 +61,14 @@ const destroy = (req, res, next) => {
 
 module.exports = controller({
   index,
+  userruns,
   show,
   create,
   update,
   destroy
 }, { before: [
-  { method: setUser, only: ['index', 'show'] },
-  { method: authenticate, except: ['index', 'show'] },
+  { method: setUser, only: ['index', 'userruns', 'show'] },
+  { method: authenticate, except: ['index', 'userruns', 'show'] },
   { method: setModel(Run), only: ['show'] },
   { method: setModel(Run, { forUser: true }), only: ['update', 'destroy'] }
 ] })
