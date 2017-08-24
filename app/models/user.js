@@ -10,6 +10,14 @@ const userSchema = new mongoose.Schema({
     unique: true,
     required: true
   },
+  firstName: {
+    type: String,
+    required: false
+  },
+  lastName: {
+    type: String,
+    required: false
+  },
   token: {
     type: String,
     required: true
@@ -44,6 +52,10 @@ userSchema.methods.comparePassword = function (password) {
 
 userSchema.virtual('password').set(function (password) {
   this._password = password
+})
+
+userSchema.virtual('fullName').get(function () {
+  return this.firstName + ' ' + this.lastName
 })
 
 userSchema.pre('save', function (next) {
