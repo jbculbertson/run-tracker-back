@@ -19,6 +19,14 @@ const runSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true
+  },
+  _ownerFirstName: {
+    type: String,
+    required: true
+  },
+  _ownerLastName: {
+    type: String,
+    required: true
   }
 }, {
   timestamps: true,
@@ -34,6 +42,10 @@ const runSchema = new mongoose.Schema({
 
 runSchema.virtual('avgPace').get(function () {
   return (this.timeTaken / this.distance).toFixed(2)
+})
+
+runSchema.virtual('ownerName').get(function () {
+  return (this._ownerFirstName + ' ' + this._ownerLastName)
 })
 
 const Run = mongoose.model('Run', runSchema)

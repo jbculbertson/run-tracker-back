@@ -33,9 +33,10 @@ const show = (req, res) => {
 }
 
 const create = (req, res, next) => {
-  console.log('fires from within constroller ' + req.body)
   const run = Object.assign(req.body.run, {
-    _owner: req.user._id
+    _owner: req.user._id,
+    _ownerFirstName: req.user.firstName,
+    _ownerLastName: req.user.lastName
   })
   Run.create(run)
     .then(run =>
