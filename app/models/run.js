@@ -46,7 +46,7 @@ const runSchema = new mongoose.Schema({
 })
 
 runSchema.virtual('avgPace').get(function () {
-  return (this.timeTaken / this.distance).toFixed(2)
+  return +(this.timeTaken / this.distance).toFixed(2)
 })
 
 runSchema.virtual('ownerName').get(function () {
