@@ -7,6 +7,11 @@ const runSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
+  date: {
+    type: Date,
+    required: true,
+    default: Date.now
+  },
   timeTaken: {
     type: Number,
     required: true
