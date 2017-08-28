@@ -22,9 +22,9 @@ allowed me to make slow and steady progress through some difficult issues.
 
 ## Links
 * [Front End Repo](https://github.com/jbculbertson/map-my-run)
-* [Deployed Site]('https://jbculbertson.github.io/map-my-run/')
-* [Back End Repo]('https://github.com/jbculbertson/run-tracker-back')
-* [Deployed API]('https://glacial-oasis-55159.herokuapp.com')
+* [Deployed Site](https://jbculbertson.github.io/map-my-run/)
+* [Back End Repo](https://github.com/jbculbertson/run-tracker-back)
+* [Deployed API](https://glacial-oasis-55159.herokuapp.com)
 
 ## Technologies Used
   - Express
