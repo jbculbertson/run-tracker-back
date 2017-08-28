@@ -3,18 +3,13 @@
 const mongoose = require('mongoose')
 
 const likeSchema = new mongoose.Schema({
-  total: {
-    type: Number,
-    required: true
-  },
   _owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true
   },
-  _likedRun: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Run',
+  _run_id: {
+    type: String,
     required: true
   }
 }, {

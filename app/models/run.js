@@ -1,6 +1,7 @@
 'use strict'
 
 const mongoose = require('mongoose')
+const likeSchema = require('./like')
 
 const runSchema = new mongoose.Schema({
   distance: {
@@ -19,6 +20,12 @@ const runSchema = new mongoose.Schema({
   route: {
     type: [[Number]],
     required: true
+  },
+  likes: {
+    type: [{
+      like_id: mongoose.Schema.Types.ObjectId
+    }],
+    ref: 'Like'
   },
   _owner: {
     type: mongoose.Schema.Types.ObjectId,
