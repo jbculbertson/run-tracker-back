@@ -8,6 +8,10 @@ const likeSchema = new mongoose.Schema({
     ref: 'User',
     required: true
   },
+  _ownerFullName: {
+    type: String,
+    required: true
+  },
   _run_id: {
     type: String,
     required: true
@@ -23,10 +27,6 @@ const likeSchema = new mongoose.Schema({
     }
   }
 })
-
-// likeSchema.virtual('length').get(function length () {
-//   return this.text.length
-// })
 
 const Like = mongoose.model('Like', likeSchema)
 

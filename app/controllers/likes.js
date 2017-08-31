@@ -28,31 +28,23 @@ const create = (req, res, next) => {
   console.log('req.user is ', req.user)
   console.log('req.body is ', req.body.like)
   const like = Object.assign(req.body.like, {
-    _owner: req.user._id
+    _owner: req.user._id,
+    _ownerFullName: req.user.fullName
   })
-  console.log('after object.assign, like is: ', like)
-  // Like.create(like)
-  //   .then(like =>
-  //     res.status(201)
-  //       .json({
-  //         like: like.toJSON({virtuals: true, user: req.user})
-  //       }))
-  //   .catch(next)
-  Run.update(
-    { _id: req.body.like._run_id },
-    { $push: { likes: like } }
-  )
-  .then(data => {
-    console.log('after run.update, data is: ', data)
-    return data
-  })
-    .then((like) => res.sendStatus(204))
+  console.log('after Object.assign, like is: ', like)
+  let targetRun = {}
+  Run.findById(req.body.like._run_id)
+    .then((run) => {
+      targetRun = run
+      return Like.create(like)
+    })
+    .then((like) => {
+      targetRun.likes.push(like)
+      return targetRun.save()
+    })
+    .then(() => res.sendStatus(204))
     .catch(next)
 }
-  // Run.findOne(id, {$set: { size: 'large' }}, { new: true }, function (err, tank) {
-  //   res.send(tank)
-  // });
-  // Like.findOne().update(run.likes.push(data))
 
 const update = (req, res, next) => {
   delete req.body._owner  // disallow owner reassignment.
