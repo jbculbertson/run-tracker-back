@@ -25,13 +25,10 @@ const show = (req, res) => {
 }
 
 const create = (req, res, next) => {
-  console.log('req.user is ', req.user)
-  console.log('req.body is ', req.body.like)
   const like = Object.assign(req.body.like, {
     _owner: req.user._id,
     _ownerFullName: req.user.fullName
   })
-  console.log('after Object.assign, like is: ', like)
   let targetRun = {}
   Run.findById(req.body.like._run_id)
     .then((run) => {

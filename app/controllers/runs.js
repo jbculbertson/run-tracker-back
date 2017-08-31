@@ -33,13 +33,11 @@ const show = (req, res) => {
 }
 
 const create = (req, res, next) => {
-  console.log('req.body.run in run is: ', req.body.run)
   const run = Object.assign(req.body.run, {
     _owner: req.user._id,
     _ownerFirstName: req.user.firstName,
     _ownerLastName: req.user.lastName
   })
-  console.log('after object.assign, run is: ', run)
   Run.create(run)
     .then(run =>
       res.status(201)
@@ -50,12 +48,10 @@ const create = (req, res, next) => {
 }
 
 const update = (req, res, next) => {
-  console.log('req.body in Updaterun is: ', req.body.run)
   delete req.body._owner  // disallow owner reassignment.
   req.run.update(req.body.run)
     .then(() => res.sendStatus(204))
     .catch(next)
-  console.log('req.body in Updaterun is: ', req.body.run)
 }
 
 const destroy = (req, res, next) => {
